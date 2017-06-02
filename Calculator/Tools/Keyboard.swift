@@ -12,32 +12,38 @@ protocol StringRepresentable {
     func toString() -> String
 }
 
-protocol KeyboardElement {
+protocol CalcElement: StringRepresentable {
     
 }
 
-extension Float: KeyboardElement {
+extension Float: CalcElement {
     
 }
 
-extension AdditionOperator: KeyboardElement {
+extension AdditionOperator: CalcElement {
     
 }
 
-extension SubstractionOperator: KeyboardElement {
+extension SubstractionOperator: CalcElement {
     
 }
 
-class Decimal: KeyboardElement {
-    
+class Decimal: CalcElement {
+    func toString() -> String {
+        return "."
+    }
 }
 
-class Equals: KeyboardElement {
-    
+class Equals: CalcElement {
+    func toString() -> String {
+        return "="
+    }
 }
 
-class Clear: KeyboardElement {
-    
+class Clear: CalcElement {
+    func toString() -> String {
+        return "C"
+    }
 }
 
 enum KeyboardKey: String {
@@ -58,20 +64,7 @@ enum KeyboardKey: String {
     case equals = "="
     case clear = "CLEAR"
     
-    func isNumber() -> Bool {
-        return self == .number0 ||
-        self == .number1 ||
-        self == .number2 ||
-        self == .number3 ||
-        self == .number4 ||
-        self == .number5 ||
-        self == .number6 ||
-        self == .number7 ||
-        self == .number8 ||
-        self == .number9
-    }
-    
-    var element: KeyboardElement {
+    var element: CalcElement {
         get {
             switch self {
             case .number0:
@@ -110,7 +103,7 @@ enum KeyboardKey: String {
 }
 
 protocol KeyboardDelegate {
-    func keyClicked(element: KeyboardElement)
+    func keyClicked(element: CalcElement)
 }
 
 class Keyboard: UIView {

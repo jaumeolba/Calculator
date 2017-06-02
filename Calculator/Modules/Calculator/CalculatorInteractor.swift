@@ -10,6 +10,8 @@ import Foundation
 
 protocol CalculatorInteractorProtocol: class {
     var presenter: CalculatorInteractorDelegate! { get set }
+    
+    func calculateResult(stack: Stack<CalcElement>)
 }
 
 protocol CalculatorInteractorDelegate: class {
@@ -18,4 +20,8 @@ protocol CalculatorInteractorDelegate: class {
 
 class CalculatorInteractor: CalculatorInteractorProtocol {
     weak var presenter: CalculatorInteractorDelegate!
+    
+    func calculateResult(stack: Stack<CalcElement>) {
+        
+    }
 }

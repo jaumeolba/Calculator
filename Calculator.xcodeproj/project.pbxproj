@@ -24,6 +24,7 @@
 		05CE21B21EE14B0D009771DC /* Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05CE21B11EE14B0D009771DC /* Keyboard.swift */; };
 		05CE21B41EE14B87009771DC /* Operator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05CE21B31EE14B87009771DC /* Operator.swift */; };
 		05CE21B61EE14B9A009771DC /* Operand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05CE21B51EE14B9A009771DC /* Operand.swift */; };
+		05CE21BE1EE169A8009771DC /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05CE21BD1EE169A8009771DC /* Stack.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 		05CE21B11EE14B0D009771DC /* Keyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keyboard.swift; sourceTree = "<group>"; };
 		05CE21B31EE14B87009771DC /* Operator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Operator.swift; sourceTree = "<group>"; };
 		05CE21B51EE14B9A009771DC /* Operand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Operand.swift; sourceTree = "<group>"; };
+		05CE21BD1EE169A8009771DC /* Stack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stack.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,6 +185,7 @@
 				05CE21B51EE14B9A009771DC /* Operand.swift */,
 				05CE21B31EE14B87009771DC /* Operator.swift */,
 				05CE21B11EE14B0D009771DC /* Keyboard.swift */,
+				05CE21BD1EE169A8009771DC /* Stack.swift */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -325,6 +328,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				05CE21A31EE132AB009771DC /* CalculatorModule.swift in Sources */,
+				05CE21BE1EE169A8009771DC /* Stack.swift in Sources */,
 				05CE21AA1EE13326009771DC /* Router.swift in Sources */,
 				05CE21B21EE14B0D009771DC /* Keyboard.swift in Sources */,
 				05CE21A81EE1331D009771DC /* Module.swift in Sources */,

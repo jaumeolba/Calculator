@@ -23,4 +23,7 @@ class CalculatorView: UIViewController, CalculatorViewProtocol {
         resultView.isEnabled = false
     }
 
+    func updateDisplay(display: String) {
+        displayView.text = display
+    }
 }
