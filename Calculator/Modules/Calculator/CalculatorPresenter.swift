@@ -12,7 +12,7 @@ protocol CalculatorViewProtocol: class {
     var presenter: CalculatorPresenterProtocol! { get set }
 }
 
-protocol CalculatorPresenterProtocol: class {
+protocol CalculatorPresenterProtocol: KeyboardDelegate {
     var view: CalculatorViewProtocol! { get set }
     var interactor: CalculatorInteractorProtocol! { get set }
     var router: CalculatorRouterProtocol! { get set }
@@ -22,4 +22,12 @@ class CalculatorPresenter: CalculatorPresenterProtocol, CalculatorInteractorDele
     weak var view: CalculatorViewProtocol!
     var interactor: CalculatorInteractorProtocol!
     var router: CalculatorRouterProtocol!
+}
+
+
+extension CalculatorPresenter: KeyboardDelegate {
+    
+    func keyClicked(element: KeyboardElement) {
+        
+    }
 }

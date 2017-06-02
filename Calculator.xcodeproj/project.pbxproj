@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		05CE21691EE131CA009771DC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05CE21681EE131CA009771DC /* AppDelegate.swift */; };
-		05CE216E1EE131CA009771DC /* Calculator.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05CE216C1EE131CA009771DC /* Calculator.storyboard */; };
 		05CE21701EE131CA009771DC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 05CE216F1EE131CA009771DC /* Assets.xcassets */; };
 		05CE21731EE131CA009771DC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05CE21711EE131CA009771DC /* LaunchScreen.storyboard */; };
 		05CE217E1EE131CA009771DC /* CalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05CE217D1EE131CA009771DC /* CalculatorTests.swift */; };
@@ -21,6 +20,10 @@
 		05CE21A31EE132AB009771DC /* CalculatorModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05CE21A21EE132AB009771DC /* CalculatorModule.swift */; };
 		05CE21A81EE1331D009771DC /* Module.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05CE21A71EE1331D009771DC /* Module.swift */; };
 		05CE21AA1EE13326009771DC /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05CE21A91EE13326009771DC /* Router.swift */; };
+		05CE21AC1EE13CB4009771DC /* Calculator.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05CE21AB1EE13CB4009771DC /* Calculator.storyboard */; };
+		05CE21B21EE14B0D009771DC /* Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05CE21B11EE14B0D009771DC /* Keyboard.swift */; };
+		05CE21B41EE14B87009771DC /* Operator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05CE21B31EE14B87009771DC /* Operator.swift */; };
+		05CE21B61EE14B9A009771DC /* Operand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05CE21B51EE14B9A009771DC /* Operand.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,7 +46,6 @@
 /* Begin PBXFileReference section */
 		05CE21651EE131CA009771DC /* Calculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Calculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		05CE21681EE131CA009771DC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		05CE216D1EE131CA009771DC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Calculator.storyboard; sourceTree = "<group>"; };
 		05CE216F1EE131CA009771DC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		05CE21721EE131CA009771DC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		05CE21741EE131CA009771DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -61,6 +63,10 @@
 		05CE21A21EE132AB009771DC /* CalculatorModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculatorModule.swift; sourceTree = "<group>"; };
 		05CE21A71EE1331D009771DC /* Module.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Module.swift; sourceTree = "<group>"; };
 		05CE21A91EE13326009771DC /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		05CE21AB1EE13CB4009771DC /* Calculator.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Calculator.storyboard; sourceTree = "<group>"; };
+		05CE21B11EE14B0D009771DC /* Keyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keyboard.swift; sourceTree = "<group>"; };
+		05CE21B31EE14B87009771DC /* Operator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Operator.swift; sourceTree = "<group>"; };
+		05CE21B51EE14B9A009771DC /* Operand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Operand.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +117,7 @@
 		05CE21671EE131CA009771DC /* Calculator */ = {
 			isa = PBXGroup;
 			children = (
+				05CE21B01EE14AF1009771DC /* Tools */,
 				05CE21961EE131E5009771DC /* Modules */,
 				05CE21681EE131CA009771DC /* AppDelegate.swift */,
 				05CE216F1EE131CA009771DC /* Assets.xcassets */,
@@ -150,7 +157,7 @@
 		05CE21971EE131E5009771DC /* Calculator */ = {
 			isa = PBXGroup;
 			children = (
-				05CE216C1EE131CA009771DC /* Calculator.storyboard */,
+				05CE21AB1EE13CB4009771DC /* Calculator.storyboard */,
 				05CE21981EE131F1009771DC /* CalculatorView.swift */,
 				05CE219C1EE13204009771DC /* CalculatorInteractor.swift */,
 				05CE219A1EE131FB009771DC /* CalculatorPresenter.swift */,
@@ -168,6 +175,16 @@
 				05CE21A91EE13326009771DC /* Router.swift */,
 			);
 			path = Base;
+			sourceTree = "<group>";
+		};
+		05CE21B01EE14AF1009771DC /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				05CE21B51EE14B9A009771DC /* Operand.swift */,
+				05CE21B31EE14B87009771DC /* Operator.swift */,
+				05CE21B11EE14B0D009771DC /* Keyboard.swift */,
+			);
+			path = Tools;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -281,8 +298,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				05CE21731EE131CA009771DC /* LaunchScreen.storyboard in Resources */,
+				05CE21AC1EE13CB4009771DC /* Calculator.storyboard in Resources */,
 				05CE21701EE131CA009771DC /* Assets.xcassets in Resources */,
-				05CE216E1EE131CA009771DC /* Calculator.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -309,11 +326,14 @@
 			files = (
 				05CE21A31EE132AB009771DC /* CalculatorModule.swift in Sources */,
 				05CE21AA1EE13326009771DC /* Router.swift in Sources */,
+				05CE21B21EE14B0D009771DC /* Keyboard.swift in Sources */,
 				05CE21A81EE1331D009771DC /* Module.swift in Sources */,
 				05CE21991EE131F1009771DC /* CalculatorView.swift in Sources */,
+				05CE21B41EE14B87009771DC /* Operator.swift in Sources */,
 				05CE219B1EE131FB009771DC /* CalculatorPresenter.swift in Sources */,
 				05CE21A11EE13219009771DC /* CalculatorEntity.swift in Sources */,
 				05CE219D1EE13204009771DC /* CalculatorInteractor.swift in Sources */,
+				05CE21B61EE14B9A009771DC /* Operand.swift in Sources */,
 				05CE219F1EE1320E009771DC /* CalculatorRouter.swift in Sources */,
 				05CE21691EE131CA009771DC /* AppDelegate.swift in Sources */,
 			);
@@ -351,15 +371,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		05CE216C1EE131CA009771DC /* Calculator.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				05CE216D1EE131CA009771DC /* Base */,
-			);
-			name = Calculator.storyboard;
-			path = ../..;
-			sourceTree = "<group>";
-		};
 		05CE21711EE131CA009771DC /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -569,6 +580,7 @@
 				05CE218F1EE131CA009771DC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		05CE21901EE131CA009771DC /* Build configuration list for PBXNativeTarget "CalculatorTests" */ = {
 			isa = XCConfigurationList;
@@ -577,6 +589,7 @@
 				05CE21921EE131CA009771DC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		05CE21931EE131CA009771DC /* Build configuration list for PBXNativeTarget "CalculatorUITests" */ = {
 			isa = XCConfigurationList;
@@ -585,6 +598,7 @@
 				05CE21951EE131CA009771DC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
