@@ -8,27 +8,61 @@
 
 import Foundation
 
+enum Type {
+    case LIFO, FIFO
+}
+
 class Stack<T> {
     var stackArray = [T]()
+    
+    var type: Type = .LIFO
+    
+    init() {
+        
+    }
+    
+    init(_ firstElement: T) {
+        push(firstElement)
+    }
     
     func push(_ element: T){
         self.stackArray.append(element)
     }
     
     func pop() -> T? {
-        if let lastValue = self.stackArray.last {
-            self.stackArray.removeLast()
-            return lastValue
-        } else {
-            return nil
+        switch type {
+        case .LIFO:
+            if let lastValue = self.stackArray.last {
+                self.stackArray.removeLast()
+                return lastValue
+            } else {
+                return nil
+            }
+        case .FIFO:
+            if let firtValue = self.stackArray.first {
+                self.stackArray.removeFirst()
+                return firtValue
+            } else {
+                return nil
+            }
         }
+        
     }
     
     func peek() -> T? {
-        if let lastValue = self.stackArray.last {
-            return lastValue
-        } else {
-            return nil
+        switch type {
+        case .LIFO:
+            if let lastValue = self.stackArray.last {
+                return lastValue
+            } else {
+                return nil
+            }
+        case .FIFO:
+            if let firtValue = self.stackArray.first {
+                return firtValue
+            } else {
+                return nil
+            }
         }
     }
     

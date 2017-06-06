@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol Operand: StringRepresentable {
+protocol Operand: CalcElement {
 
     mutating func append(_ operand: Operand)
     mutating func value() -> Float

@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol Operator: StringRepresentable {
+protocol Operator: CalcElement {
     
     func calculate(firstOperand: Operand, secondOperand: Operand) -> Operand
 }

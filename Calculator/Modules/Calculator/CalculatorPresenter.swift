@@ -19,12 +19,20 @@ protocol CalculatorPresenterProtocol: KeyboardDelegate {
     var router: CalculatorRouterProtocol! { get set }
 }
 
-class CalculatorPresenter: CalculatorPresenterProtocol, CalculatorInteractorDelegate {
+class CalculatorPresenter: CalculatorPresenterProtocol {
     weak var view: CalculatorViewProtocol!
     var interactor: CalculatorInteractorProtocol!
     var router: CalculatorRouterProtocol!
     
-    internal var stack = Stack<CalcElement>()
+    internal var stack = Stack<CalcElement>(Float(0))
+}
+
+extension CalculatorPresenter: CalculatorInteractorDelegate {
+    func operationResult(_ result: Float?) {
+        if let value = result?.toString() {
+            view.updateDisplay(display: value)
+        }
+    }
 }
 
 
@@ -56,6 +64,7 @@ extension CalculatorPresenter: KeyboardDelegate {
             
         } else if element is Clear {
             stack.clear()
+            stack.push(Float(0))
         } else if element is Equals {
             interactor.calculateResult(stack: stack)
             return
