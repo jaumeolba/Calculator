@@ -17,6 +17,12 @@ protocol CalcElement: StringRepresentable {
 }
 
 extension Float: CalcElement {
+    func toString() -> String {
+        return String.init(format: "%f", self)
+    }
+}
+
+extension MyCalcNumber: CalcElement {
     
 }
 
@@ -68,25 +74,25 @@ enum KeyboardKey: String {
         get {
             switch self {
             case .number0:
-                return Float.init(0.0)
+                return MyCalcNumber.init(0.0)
             case .number1:
-                return Float.init(1.0)
+                return MyCalcNumber.init(1.0)
             case .number2:
-                return Float.init(2.0)
+                return MyCalcNumber.init(2.0)
             case .number3:
-                return Float.init(3.0)
+                return MyCalcNumber.init(3.0)
             case .number4:
-                return Float.init(4.0)
+                return MyCalcNumber.init(4.0)
             case .number5:
-                return Float.init(5.0)
+                return MyCalcNumber.init(5.0)
             case .number6:
-                return Float.init(6.0)
+                return MyCalcNumber.init(6.0)
             case .number7:
-                return Float.init(7.0)
+                return MyCalcNumber.init(7.0)
             case .number8:
-                return Float.init(8.0)
+                return MyCalcNumber.init(8.0)
             case .number9:
-                return Float.init(9.0)
+                return MyCalcNumber.init(9.0)
             case .addition:
                 return AdditionOperator()
             case .substraction:

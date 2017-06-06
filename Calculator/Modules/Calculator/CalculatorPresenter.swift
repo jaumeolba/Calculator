@@ -32,7 +32,7 @@ extension CalculatorPresenter: CalculatorInteractorDelegate {
         if let result = result {
             view.updateDisplay(display: result.toString())
             stack.clear()
-            stack.push(result)
+            stack.push(MyCalcNumber.init(result))
         }
     }
 }
@@ -41,9 +41,9 @@ extension CalculatorPresenter: CalculatorInteractorDelegate {
 extension CalculatorPresenter: KeyboardDelegate {
     
     func keyClicked(element: CalcElement) {
-        if let newElement = element as? Float {
+        if let newElement = element as? MyCalcNumber {
             if stack.peek() is Operand {
-                var operand = stack.pop() as? Float
+                var operand = stack.pop() as? MyCalcNumber
                 if operand != nil {
                     operand!.append(newElement)
                     stack.push(operand!)
@@ -63,7 +63,13 @@ extension CalculatorPresenter: KeyboardDelegate {
                 }
             }
         } else if element is Decimal {
-            
+            if stack.peek() is Operand {
+                var operand = stack.pop() as? MyCalcNumber
+                if operand != nil {
+                    operand!.startDecimal()
+                    stack.push(operand!)
+                }
+            }
         } else if element is Clear {
             stack.clear()
         } else if element is Equals {

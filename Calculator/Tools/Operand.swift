@@ -10,23 +10,48 @@ import Foundation
 
 protocol Operand: CalcElement {
 
-    mutating func append(_ operand: Operand)
-    mutating func value() -> Float
+    func append(_ operand: Operand)
+    func startDecimal()
+    func value() -> Float
 }
 
-extension Float: Operand {
+class MyCalcNumber: Operand {
+
     
-    mutating func append(_ operand: Operand) {
-        var op = operand
-        multiply(by: 10.0)
-        add(op.value())
+    var decimal: Bool = false
+    var _value: Float = 0.0
+    var numOfDecimals = 0
+    
+    init(_ value: Float) {
+        self._value = value
+    }
+    
+    func startDecimal() {
+        self.decimal = true
+    }
+    
+    func append(_ operand: Operand) {
+        if decimal {
+            var op = operand.value()
+            var ten: Float = 1.0
+            for _ in 0...numOfDecimals {
+                ten = ten * 10.0
+            }
+            
+            op.divide(by: Float(ten))
+            _value.add(op)
+            numOfDecimals += 1
+        } else {
+            _value.multiply(by: 10.0)
+            _value.add(operand.value())
+        }
     }
     
     func value() -> Float {
-        return self
+        return _value
     }
-    
+
     func toString() -> String {
-        return String.init(format: "%f", self)
+        return String.init(format: "%.\(numOfDecimals)f", _value)
     }
 }

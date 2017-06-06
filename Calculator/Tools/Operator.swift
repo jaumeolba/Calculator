@@ -10,14 +10,14 @@ import Foundation
 
 protocol Operator: CalcElement {
     
-    func calculate(firstOperand: Operand, secondOperand: Operand) -> Operand
+    func calculate(firstOperand: Operand, secondOperand: Operand) -> Float
 }
 
 class AdditionOperator: Operator {
     
     private let stringValue = "+"
     
-    func calculate(firstOperand: Operand, secondOperand: Operand) -> Operand {
+    func calculate(firstOperand: Operand, secondOperand: Operand) -> Float {
         var op1 = firstOperand
         var op2 = secondOperand
         return op1.value() + op2.value()
@@ -32,7 +32,7 @@ class SubstractionOperator: Operator {
     
     private let stringValue = "-"
     
-    func calculate(firstOperand: Operand, secondOperand: Operand) -> Operand {
+    func calculate(firstOperand: Operand, secondOperand: Operand) -> Float {
         var op1 = firstOperand
         var op2 = secondOperand
         return op1.value() - op2.value()
