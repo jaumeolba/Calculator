@@ -13,7 +13,7 @@ enum Type {
 }
 
 class Stack<T> {
-    var stackArray = [T]()
+    private var stackArray = [T]()
     
     var type: Type = .LIFO
     
@@ -23,6 +23,10 @@ class Stack<T> {
     
     init(_ firstElement: T) {
         push(firstElement)
+    }
+    
+    func insertAsFirst(_ element: T) {
+        self.stackArray.insert(element, at: 0)
     }
     
     func push(_ element: T){
@@ -72,5 +76,13 @@ class Stack<T> {
     
     func elements() -> [T] {
         return stackArray
+    }
+    
+    func reverse() {
+        var newArray = [T]()
+        for element in stackArray {
+            newArray.insert(element, at: 0)
+        }
+        stackArray = newArray
     }
 }

@@ -24,13 +24,15 @@ class CalculatorPresenter: CalculatorPresenterProtocol {
     var interactor: CalculatorInteractorProtocol!
     var router: CalculatorRouterProtocol!
     
-    internal var stack = Stack<CalcElement>(Float(0))
+    internal var stack = Stack<CalcElement>()
 }
 
 extension CalculatorPresenter: CalculatorInteractorDelegate {
     func operationResult(_ result: Float?) {
-        if let value = result?.toString() {
-            view.updateDisplay(display: value)
+        if let result = result {
+            view.updateDisplay(display: result.toString())
+            stack.clear()
+            stack.push(result)
         }
     }
 }
@@ -64,7 +66,6 @@ extension CalculatorPresenter: KeyboardDelegate {
             
         } else if element is Clear {
             stack.clear()
-            stack.push(Float(0))
         } else if element is Equals {
             interactor.calculateResult(stack: stack)
             return

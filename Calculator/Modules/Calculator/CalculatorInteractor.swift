@@ -26,6 +26,14 @@ class CalculatorInteractor: CalculatorInteractorProtocol {
     
     func calculateResult(stack: Stack<CalcElement>) {
         
+        if stack.elements().first is Operator {
+            stack.insertAsFirst(Float(0))
+        } else if stack.elements().last is Operator {
+            _ = stack.pop()
+        }
+        
+        stack.reverse()
+        
         output.clear()
         tempStack.clear()
         
@@ -92,9 +100,9 @@ class CalculatorInteractor: CalculatorInteractorProtocol {
                 if element is Operand {
                     result.push(element)
                 } else if let _operator = element as? Operator {
-                    if let firstOperator = result.pop() as? Operand,
-                        let secondOperand = result.pop() as? Operand {
-                    let operandResult = _operator.calculate(firstOperand: firstOperator, secondOperand: secondOperand)
+                    if let secondOperand = result.pop() as? Operand,
+                        let firstOperand = result.pop() as? Operand {
+                    let operandResult = _operator.calculate(firstOperand: firstOperand, secondOperand: secondOperand)
                         result.push(operandResult)
                     } else {
                         break
