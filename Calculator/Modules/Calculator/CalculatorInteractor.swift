@@ -15,7 +15,7 @@ protocol CalculatorInteractorProtocol: class {
 }
 
 protocol CalculatorInteractorDelegate: class {
-    func operationResult(_ result: Float?)
+    func operationResult(_ result: Number?)
 }
 
 class CalculatorInteractor: CalculatorInteractorProtocol {
@@ -27,7 +27,7 @@ class CalculatorInteractor: CalculatorInteractorProtocol {
     func calculateResult(stack: Stack<CalcElement>) {
         
         if stack.elements().first is Operator {
-            stack.insertAsFirst(Float(0))
+            stack.insertAsFirst(Number.init(0.0))
         } else if stack.elements().last is Operator {
             _ = stack.pop()
         }
@@ -89,7 +89,7 @@ class CalculatorInteractor: CalculatorInteractorProtocol {
         }
     }
     
-    private func performCalculation(_ output: Stack<CalcElement>) -> Float? {
+    private func performCalculation(_ output: Stack<CalcElement>) -> Number? {
         
         var result = Stack<CalcElement>()
         
@@ -113,7 +113,7 @@ class CalculatorInteractor: CalculatorInteractorProtocol {
             }
         }
         
-        if let finalResult = result.pop() as? Float {
+        if let finalResult = result.pop() as? Number {
             return finalResult
         }
         return nil

@@ -10,17 +10,16 @@ import Foundation
 
 protocol Operator: CalcElement {
     
-    func calculate(firstOperand: Operand, secondOperand: Operand) -> Float
+    func calculate(firstOperand: Operand, secondOperand: Operand) -> Operand
 }
 
-class AdditionOperator: Operator {
+class AdditionOperator<T: Operand>: Operator {
     
     private let stringValue = "+"
     
-    func calculate(firstOperand: Operand, secondOperand: Operand) -> Float {
-        var op1 = firstOperand
-        var op2 = secondOperand
-        return op1.value() + op2.value()
+    func calculate(firstOperand: Operand, secondOperand: Operand) -> Operand {
+        let result = firstOperand.value() + secondOperand.value()
+        return T.init(result)
     }
     
     func toString() -> String {
@@ -28,14 +27,13 @@ class AdditionOperator: Operator {
     }
 }
 
-class SubstractionOperator: Operator {
+class SubstractionOperator<T: Operand>: Operator {
     
     private let stringValue = "-"
     
-    func calculate(firstOperand: Operand, secondOperand: Operand) -> Float {
-        var op1 = firstOperand
-        var op2 = secondOperand
-        return op1.value() - op2.value()
+    func calculate(firstOperand: Operand, secondOperand: Operand) -> Operand {
+        let result = firstOperand.value() - secondOperand.value()
+        return T.init(result)
     }
     
     func toString() -> String {

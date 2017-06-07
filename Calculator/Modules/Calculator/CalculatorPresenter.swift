@@ -28,11 +28,11 @@ class CalculatorPresenter: CalculatorPresenterProtocol {
 }
 
 extension CalculatorPresenter: CalculatorInteractorDelegate {
-    func operationResult(_ result: Float?) {
+    func operationResult(_ result: Number?) {
         if let result = result {
             view.updateDisplay(display: result.toString())
             stack.clear()
-            stack.push(MyCalcNumber.init(result))
+            stack.push(result)
         }
     }
 }
@@ -40,43 +40,48 @@ extension CalculatorPresenter: CalculatorInteractorDelegate {
 
 extension CalculatorPresenter: KeyboardDelegate {
     
-    func keyClicked(element: CalcElement) {
-        if let newElement = element as? MyCalcNumber {
-            if stack.peek() is Operand {
-                var operand = stack.pop() as? MyCalcNumber
-                if operand != nil {
-                    operand!.append(newElement)
-                    stack.push(operand!)
-                }
-            } else if stack.peek() is Operator || stack.peek() == nil {
-                stack.push(newElement)
+    func operandClicked(_ _operand: Operand) {
+        if stack.peek() is Operand {
+            if let operand = stack.pop() as? Number {
+                operand.append(_operand)
+                stack.push(operand)
             }
-        } else if element is Operator {
-            if stack.peek() is Operand {
-                stack.push(element)
-            } else if stack.peek() is Operator {
-                _ = stack.pop()
-                stack.push(element)
-            } else if stack.peek() == nil {
-                if element is SubstractionOperator {
-                    stack.push(element)
-                }
-            }
-        } else if element is Decimal {
-            if stack.peek() is Operand {
-                var operand = stack.pop() as? MyCalcNumber
-                if operand != nil {
-                    operand!.startDecimal()
-                    stack.push(operand!)
-                }
-            }
-        } else if element is Clear {
-            stack.clear()
-        } else if element is Equals {
-            interactor.calculateResult(stack: stack)
-            return
+        } else if stack.peek() is Operator || stack.peek() == nil {
+            stack.push(_operand)
         }
-        
+        view.updateDisplay(display: stack.toString())
+    }
+    
+    func operatorClicked(_ _operator: Operator) {
+        if stack.peek() is Operand {
+            stack.push(_operator)
+        } else if stack.peek() is Operator {
+            _ = stack.pop()
+            stack.push(_operator)
+        } else if stack.peek() == nil {
+            if _operator is SubstractionOperator<Number> {
+                stack.push(_operator)
+            }
+        }
+        view.updateDisplay(display: stack.toString())
+    }
+    
+    func decimalClicked() {
+        if stack.peek() is Operand {
+            if let operand = stack.pop() as? Number {
+                operand.startDecimal()
+                stack.push(operand)
+            }
+        }
+        view.updateDisplay(display: stack.toString())
+    }
+    
+    func equalsClicked() {
+        interactor.calculateResult(stack: stack)
+    }
+    
+    func clearClicked() {
+        stack.clear()
         view.updateDisplay(display: stack.toString())
     }
 }

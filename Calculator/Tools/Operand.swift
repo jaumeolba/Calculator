@@ -10,19 +10,19 @@ import Foundation
 
 protocol Operand: CalcElement {
 
+    init(_ value: Double)
     func append(_ operand: Operand)
     func startDecimal()
-    func value() -> Float
+    func value() -> Double
 }
 
-class MyCalcNumber: Operand {
-
+class Number: Operand {
     
     var decimal: Bool = false
-    var _value: Float = 0.0
+    var _value: Double = 0.0
     var numOfDecimals = 0
     
-    init(_ value: Float) {
+    required init(_ value: Double) {
         self._value = value
     }
     
@@ -33,21 +33,29 @@ class MyCalcNumber: Operand {
     func append(_ operand: Operand) {
         if decimal {
             var op = operand.value()
-            var ten: Float = 1.0
+            var ten: Double = 1.0
             for _ in 0...numOfDecimals {
                 ten = ten * 10.0
             }
             
-            op.divide(by: Float(ten))
-            _value.add(op)
+            op.divide(by: Double(ten))
+            if _value < 0 {
+                _value.subtract(op)
+            } else {
+                _value.add(op)
+            }
             numOfDecimals += 1
         } else {
             _value.multiply(by: 10.0)
-            _value.add(operand.value())
+            if _value < 0 {
+                _value.subtract(operand.value())
+            } else {
+                _value.add(operand.value())
+            }
         }
     }
     
-    func value() -> Float {
+    func value() -> Double {
         return _value
     }
 

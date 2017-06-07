@@ -25,6 +25,7 @@
 		05CE21B41EE14B87009771DC /* Operator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05CE21B31EE14B87009771DC /* Operator.swift */; };
 		05CE21B61EE14B9A009771DC /* Operand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05CE21B51EE14B9A009771DC /* Operand.swift */; };
 		05CE21BE1EE169A8009771DC /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05CE21BD1EE169A8009771DC /* Stack.swift */; };
+		C9B22A111EE8711F0020CCE6 /* Keyboard.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9B22A101EE8711F0020CCE6 /* Keyboard.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +70,7 @@
 		05CE21B31EE14B87009771DC /* Operator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Operator.swift; sourceTree = "<group>"; };
 		05CE21B51EE14B9A009771DC /* Operand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Operand.swift; sourceTree = "<group>"; };
 		05CE21BD1EE169A8009771DC /* Stack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stack.swift; sourceTree = "<group>"; };
+		C9B22A101EE8711F0020CCE6 /* Keyboard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Keyboard.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -186,6 +188,7 @@
 				05CE21B31EE14B87009771DC /* Operator.swift */,
 				05CE21B11EE14B0D009771DC /* Keyboard.swift */,
 				05CE21BD1EE169A8009771DC /* Stack.swift */,
+				C9B22A101EE8711F0020CCE6 /* Keyboard.xib */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -302,6 +305,7 @@
 			files = (
 				05CE21731EE131CA009771DC /* LaunchScreen.storyboard in Resources */,
 				05CE21AC1EE13CB4009771DC /* Calculator.storyboard in Resources */,
+				C9B22A111EE8711F0020CCE6 /* Keyboard.xib in Resources */,
 				05CE21701EE131CA009771DC /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -487,6 +491,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = NXAX6MA6VD;
 				INFOPLIST_FILE = Calculator/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Jolles.Calculator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -500,6 +505,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = NXAX6MA6VD;
 				INFOPLIST_FILE = Calculator/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Jolles.Calculator;
 				PRODUCT_NAME = "$(TARGET_NAME)";

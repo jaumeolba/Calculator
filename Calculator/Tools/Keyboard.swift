@@ -22,36 +22,6 @@ extension Float: CalcElement {
     }
 }
 
-extension MyCalcNumber: CalcElement {
-    
-}
-
-extension AdditionOperator: CalcElement {
-    
-}
-
-extension SubstractionOperator: CalcElement {
-    
-}
-
-class Decimal: CalcElement {
-    func toString() -> String {
-        return "."
-    }
-}
-
-class Equals: CalcElement {
-    func toString() -> String {
-        return "="
-    }
-}
-
-class Clear: CalcElement {
-    func toString() -> String {
-        return "C"
-    }
-}
-
 enum KeyboardKey: String {
     
     case number1 = "1"
@@ -66,60 +36,74 @@ enum KeyboardKey: String {
     case number0 = "0"
     case addition = "+"
     case substraction = "-"
-    case decimal = "."
-    case equals = "="
-    case clear = "CLEAR"
     
     var element: CalcElement {
         get {
             switch self {
             case .number0:
-                return MyCalcNumber.init(0.0)
+                return Number.init(0.0)
             case .number1:
-                return MyCalcNumber.init(1.0)
+                return Number.init(1.0)
             case .number2:
-                return MyCalcNumber.init(2.0)
+                return Number.init(2.0)
             case .number3:
-                return MyCalcNumber.init(3.0)
+                return Number.init(3.0)
             case .number4:
-                return MyCalcNumber.init(4.0)
+                return Number.init(4.0)
             case .number5:
-                return MyCalcNumber.init(5.0)
+                return Number.init(5.0)
             case .number6:
-                return MyCalcNumber.init(6.0)
+                return Number.init(6.0)
             case .number7:
-                return MyCalcNumber.init(7.0)
+                return Number.init(7.0)
             case .number8:
-                return MyCalcNumber.init(8.0)
+                return Number.init(8.0)
             case .number9:
-                return MyCalcNumber.init(9.0)
+                return Number.init(9.0)
             case .addition:
-                return AdditionOperator()
+                return AdditionOperator<Number>()
             case .substraction:
-                return SubstractionOperator()
-            case .decimal:
-                return Decimal()
-            case .equals:
-                return Equals()
-            case .clear:
-                return Clear()
+                return SubstractionOperator<Number>()
             }
         }
     }
 }
 
 protocol KeyboardDelegate {
-    func keyClicked(element: CalcElement)
+    func operandClicked(_ _operand: Operand)
+    func operatorClicked(_ _operator: Operator)
+    func decimalClicked()
+    func equalsClicked()
+    func clearClicked()
 }
 
 class Keyboard: UIView {
     
     var delegate: KeyboardDelegate?
     
-    @IBAction func keyClicked(_ sender: Any) {
-        guard let buttonText = (sender as? UIButton)?.titleLabel?.text,  let keyboardKey = KeyboardKey.init(rawValue: buttonText) else {
+    @IBAction func decimalClicked(_ sender: UIButton) {
+        delegate?.decimalClicked()
+    }
+    
+    @IBAction func operandClicked(_ sender: UIButton) {
+        guard let buttonText = sender.titleLabel?.text,  let operand = KeyboardKey.init(rawValue: buttonText)?.element as? Operand else {
             return
         }
-        delegate?.keyClicked(element: keyboardKey.element)
+        delegate?.operandClicked(operand)
+    }
+    
+    @IBAction func operatorClicked(_ sender: UIButton) {
+        guard let buttonText = sender.titleLabel?.text,  let _operator = KeyboardKey.init(rawValue: buttonText)?.element as? Operator else {
+            return
+        }
+        delegate?.operatorClicked(_operator)
+    }
+    
+    @IBAction func equalsClicked(_ sender: UIButton) {
+        delegate?.equalsClicked()
+    }
+
+    @IBAction func clearClicked(_ sender: UIButton) {
+        delegate?.clearClicked()
     }
 }
