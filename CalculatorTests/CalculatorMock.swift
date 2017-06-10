@@ -31,7 +31,11 @@ class CalculatorInteractorDelegateMock: CalculatorInteractorDelegate {
     var call = ""
     
     func operationResult(_ result: Number?) {
-        call = "operationResult - \(result)"
+        if let _result = result {
+            call = "operationResult - \(_result.toString())"
+        } else{
+            call = "operationResult - ERROR"
+        }
     }
     
 }

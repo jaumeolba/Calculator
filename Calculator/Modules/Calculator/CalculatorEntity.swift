@@ -11,9 +11,6 @@ import Foundation
 
 class Number: Operand {
     
-    var decimal: Bool = false
-    var numOfDecimals = 0
-    
     var _valueInString: String
     
     required init(_ value: Double) {

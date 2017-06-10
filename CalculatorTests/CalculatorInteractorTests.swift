@@ -11,15 +11,47 @@ import XCTest
 
 class CalculatorInteractorTests: XCTestCase {
     
+    var presenter: CalculatorInteractorDelegateMock!
+    var interactor: CalculatorInteractor!
+    
     override func setUp() {
         super.setUp()
+        presenter = CalculatorInteractorDelegateMock()
+        interactor = CalculatorInteractor()
+        
+        interactor.presenter = presenter
     }
     
     override func tearDown() {
         super.tearDown()
+        presenter.call = ""
     }
     
-    func testExample() {
+    func testCalculateResultFailed() {
+        let stack = Stack<CalcElement>()
+        interactor.calculateResult(stack: stack)
+        XCTAssertTrue(presenter.call.isEmpty)
         
+        stack.push(AdditionOperator<Number>())
+        interactor.calculateResult(stack: stack)
+        XCTAssertTrue(presenter.call.isEmpty)
+        
+        stack.push(Number.init(6))
+        interactor.calculateResult(stack: stack)
+        XCTAssertTrue(presenter.call == "operationResult - 6")
+        
+        stack.push(Number.init(6))
+        stack.push(SubstractionOperator<Number>())
+        stack.push(Number.init(5.5))
+        interactor.calculateResult(stack: stack)
+        XCTAssertTrue(presenter.call == "operationResult - 0.5")
+        
+        stack.push(Number.init(6))
+        stack.push(SubstractionOperator<Number>())
+        stack.push(Number.init(5.5))
+        stack.push(SubstractionOperator<Number>())
+        stack.push(Number.init(25))
+        interactor.calculateResult(stack: stack)
+        XCTAssertTrue(presenter.call == "operationResult - -24.5")
     }
 }

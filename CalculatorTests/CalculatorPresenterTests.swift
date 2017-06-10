@@ -186,7 +186,17 @@ class CalculatorPresenterTests: XCTestCase {
         XCTAssertTrue(interactor.call == "calculateResult - \(presenter.stack.toString())")
 
     }
-
+    
+    func testOperationResultSucces() {
+        let resultNumber = Number.init(679698.24523544)
+        presenter.operationResult(resultNumber)
+        XCTAssertTrue(view.call == "updateDisplay - \(resultNumber.toString())")
+    }
+    
+    func testOperationResultFailed() {
+        presenter.operationResult(nil)
+        XCTAssertTrue(view.call == "showError")
+    }
 
 }
 

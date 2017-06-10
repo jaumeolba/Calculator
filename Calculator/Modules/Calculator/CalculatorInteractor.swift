@@ -26,23 +26,25 @@ class CalculatorInteractor: CalculatorInteractorProtocol {
     
     func calculateResult(stack: Stack<CalcElement>) {
         
-        guard stack.elements().count > 0, stack.peek() is Operand else {
+        let localStack = stack
+        
+        guard localStack.elements().count > 0, localStack.peek() is Operand else {
             return
         }
         
-        if stack.elements().first is Operator {
-            stack.insertAsFirst(Number.init(0.0))
-        } else if stack.elements().last is Operator {
-            _ = stack.pop()
+        if localStack.elements().first is Operator {
+            localStack.insertAsFirst(Number.init(0))
+        } else if localStack.elements().last is Operator {
+            _ = localStack.pop()
         }
         
-        stack.reverse()
+        localStack.reverse()
         
         output.clear()
         tempStack.clear()
         
-        while stack.peek() != nil {
-            if let element = stack.pop() {
+        while localStack.peek() != nil {
+            if let element = localStack.pop() {
                 if let operand = element as? Operand {
                     processOperand(operand)
                 } else if let _operator = element as? Operator {
@@ -120,7 +122,11 @@ class CalculatorInteractor: CalculatorInteractorProtocol {
         }
         
         if let finalResult = result.pop() as? Number {
-            return finalResult
+            if let doubleValue = finalResult.value(), floor(doubleValue) == doubleValue {
+                return Number.init(Int(doubleValue))
+            } else {
+                return finalResult
+            }
         }
         return nil
     }
