@@ -25,8 +25,6 @@ class ModuleBuilder {
         switch module {
         case .Calculator:
             return CalculatorModule.build()
-        default:
-            return nil
         }
     }
 }

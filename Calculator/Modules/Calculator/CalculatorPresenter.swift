@@ -15,7 +15,7 @@ protocol CalculatorViewProtocol: class {
 }
 
 protocol CalculatorPresenterProtocol: KeyboardDelegate {
-    var view: CalculatorViewProtocol! { get set }
+    weak var view: CalculatorViewProtocol! { get set }
     var interactor: CalculatorInteractorProtocol! { get set }
     var router: CalculatorRouterProtocol! { get set }
 }

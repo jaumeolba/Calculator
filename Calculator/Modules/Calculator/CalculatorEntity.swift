@@ -8,24 +8,77 @@
 
 import Foundation
 
-protocol Operator: CalcElement {
+
+class Number: Operand {
     
-    func calculate(firstOperand: Operand, secondOperand: Operand) -> Operand?
+    var decimal: Bool = false
+    var numOfDecimals = 0
+    
+    var _valueInString: String
+    
+    required init(_ value: Double) {
+        _valueInString = String(value)
+    }
+    
+    required init(_ value: Int) {
+        _valueInString = String(value)
+    }
+    
+    func startDecimal() {
+        if _valueInString.characters.count > 0{
+            if !_valueInString.contains(".") {
+                _valueInString.append(".")
+            }
+        } else {
+            _valueInString.append("0.")
+        }
+    }
+    
+    func append(_ operand: Operand) {
+        _valueInString.append(operand.toString())
+    }
+    
+    func value() -> Double? {
+        return Double.init(_valueInString)
+    }
+    
+    func toString() -> String {
+        return _valueInString
+    }
 }
 
-protocol Operand: CalcElement {
+class AdditionOperator<T: Operand>: Operator {
     
-    init(_ value: Double)
-    init(_ value: Int)
-    func append(_ operand: Operand)
-    func startDecimal()
-    func value() -> Double?
+    private let stringValue = "+"
+    
+    func calculate(firstOperand: Operand, secondOperand: Operand) -> Operand? {
+        guard let op1 = firstOperand.value(), let op2 = secondOperand.value() else {
+            return nil
+        }
+        let result = op1 + op2
+        return T.init(result)
+    }
+    
+    func toString() -> String {
+        return stringValue
+    }
 }
 
-protocol StringRepresentable {
-    func toString() -> String
+class SubstractionOperator<T: Operand>: Operator {
+    
+    private let stringValue = "-"
+    
+    func calculate(firstOperand: Operand, secondOperand: Operand) -> Operand? {
+        guard let op1 = firstOperand.value(), let op2 = secondOperand.value() else {
+            return nil
+        }
+        let result = op1 - op2
+        return T.init(result)
+    }
+    
+    func toString() -> String {
+        return stringValue
+    }
 }
 
-protocol CalcElement: StringRepresentable {
-    
-}
+

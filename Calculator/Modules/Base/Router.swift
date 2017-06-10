@@ -9,7 +9,7 @@
 import UIKit
 
 protocol RouterProtocol: class {
-    var view: CalculatorViewProtocol? { get set }
+    weak var view: CalculatorViewProtocol? { get set }
     func show(window: UIWindow?)
 }
 
@@ -19,8 +19,5 @@ extension RouterProtocol {
             return
         }
         window?.rootViewController = _view
-        
-        //Set to nil when used to avoid memory leak
-        view = nil
     }
 }

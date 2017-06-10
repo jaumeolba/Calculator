@@ -13,5 +13,5 @@ protocol CalculatorRouterProtocol: RouterProtocol {
 }
 
 class CalculatorRouter: CalculatorRouterProtocol {
-    var view: CalculatorViewProtocol?
+    weak var view: CalculatorViewProtocol?
 }
