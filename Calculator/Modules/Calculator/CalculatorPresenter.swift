@@ -11,6 +11,7 @@ import Foundation
 protocol CalculatorViewProtocol: class {
     var presenter: CalculatorPresenterProtocol! { get set }
     func updateDisplay(display: String)
+    func showError()
 }
 
 protocol CalculatorPresenterProtocol: KeyboardDelegate {
@@ -29,11 +30,13 @@ class CalculatorPresenter: CalculatorPresenterProtocol {
 
 extension CalculatorPresenter: CalculatorInteractorDelegate {
     func operationResult(_ result: Number?) {
-        if let result = result {
-            view.updateDisplay(display: result.toString())
-            stack.clear()
-            stack.push(result)
+        guard let result = result else {
+            view.showError()
+            return
         }
+        view.updateDisplay(display: result.toString())
+        stack.clear()
+        stack.push(result)
     }
 }
 

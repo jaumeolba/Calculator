@@ -26,5 +26,11 @@ class CalculatorView: UIViewController, CalculatorViewProtocol {
     func updateDisplay(display: String) {
         displayView.text = display
     }
+    
+    func showError() {
+        let alert = UIAlertController(title: nil, message: "There was an error performing the calculation", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
 
 }

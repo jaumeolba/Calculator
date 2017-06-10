@@ -26,6 +26,10 @@ class CalculatorInteractor: CalculatorInteractorProtocol {
     
     func calculateResult(stack: Stack<CalcElement>) {
         
+        guard stack.elements().count > 0, stack.peek() is Operand else {
+            return
+        }
+        
         if stack.elements().first is Operator {
             stack.insertAsFirst(Number.init(0.0))
         } else if stack.elements().last is Operator {
@@ -91,7 +95,7 @@ class CalculatorInteractor: CalculatorInteractorProtocol {
     
     private func performCalculation(_ output: Stack<CalcElement>) -> Number? {
         
-        var result = Stack<CalcElement>()
+        let result = Stack<CalcElement>()
         
         output.type = .FIFO
         
@@ -102,7 +106,9 @@ class CalculatorInteractor: CalculatorInteractorProtocol {
                 } else if let _operator = element as? Operator {
                     if let secondOperand = result.pop() as? Operand,
                         let firstOperand = result.pop() as? Operand {
-                    let operandResult = _operator.calculate(firstOperand: firstOperand, secondOperand: secondOperand)
+                        guard let operandResult = _operator.calculate(firstOperand: firstOperand, secondOperand: secondOperand) else {
+                            return nil
+                        }
                         result.push(operandResult)
                     } else {
                         break

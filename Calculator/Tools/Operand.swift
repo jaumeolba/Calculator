@@ -11,55 +11,46 @@ import Foundation
 protocol Operand: CalcElement {
 
     init(_ value: Double)
+    init(_ value: Int)
     func append(_ operand: Operand)
     func startDecimal()
-    func value() -> Double
+    func value() -> Double?
 }
 
 class Number: Operand {
     
     var decimal: Bool = false
-    var _value: Double = 0.0
     var numOfDecimals = 0
     
+    var _valueInString: String
+    
     required init(_ value: Double) {
-        self._value = value
+        _valueInString = String(value)
+    }
+    
+    required init(_ value: Int) {
+        _valueInString = String(value)
     }
     
     func startDecimal() {
-        self.decimal = true
-    }
-    
-    func append(_ operand: Operand) {
-        if decimal {
-            var op = operand.value()
-            var ten: Double = 1.0
-            for _ in 0...numOfDecimals {
-                ten = ten * 10.0
+        if _valueInString.characters.count > 0{
+            if !_valueInString.contains(".") {
+                _valueInString.append(".")
             }
-            
-            op.divide(by: Double(ten))
-            if _value < 0 {
-                _value.subtract(op)
-            } else {
-                _value.add(op)
-            }
-            numOfDecimals += 1
         } else {
-            _value.multiply(by: 10.0)
-            if _value < 0 {
-                _value.subtract(operand.value())
-            } else {
-                _value.add(operand.value())
-            }
+            _valueInString.append("0.")
         }
     }
     
-    func value() -> Double {
-        return _value
+    func append(_ operand: Operand) {
+        _valueInString.append(operand.toString())
+    }
+    
+    func value() -> Double? {
+        return Double.init(_valueInString)
     }
 
     func toString() -> String {
-        return String.init(format: "%.\(numOfDecimals)f", _value)
+        return _valueInString
     }
 }
