@@ -7,3 +7,25 @@
 //
 
 import Foundation
+
+protocol Operator: CalcElement {
+    
+    func calculate(firstOperand: Operand, secondOperand: Operand) -> Operand?
+}
+
+protocol Operand: CalcElement {
+    
+    init(_ value: Double)
+    init(_ value: Int)
+    func append(_ operand: Operand)
+    func startDecimal()
+    func value() -> Double?
+}
+
+protocol StringRepresentable {
+    func toString() -> String
+}
+
+protocol CalcElement: StringRepresentable {
+    
+}

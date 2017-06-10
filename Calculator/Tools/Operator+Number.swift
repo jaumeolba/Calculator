@@ -8,11 +8,6 @@
 
 import Foundation
 
-protocol Operator: CalcElement {
-    
-    func calculate(firstOperand: Operand, secondOperand: Operand) -> Operand?
-}
-
 class AdditionOperator<T: Operand>: Operator {
     
     private let stringValue = "+"

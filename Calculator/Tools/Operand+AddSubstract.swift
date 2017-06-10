@@ -8,15 +8,6 @@
 
 import Foundation
 
-protocol Operand: CalcElement {
-
-    init(_ value: Double)
-    init(_ value: Int)
-    func append(_ operand: Operand)
-    func startDecimal()
-    func value() -> Double?
-}
-
 class Number: Operand {
     
     var decimal: Bool = false

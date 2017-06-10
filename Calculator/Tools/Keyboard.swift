@@ -8,20 +8,6 @@
 
 import UIKit
 
-protocol StringRepresentable {
-    func toString() -> String
-}
-
-protocol CalcElement: StringRepresentable {
-    
-}
-
-extension Float: CalcElement {
-    func toString() -> String {
-        return String.init(format: "%f", self)
-    }
-}
-
 enum KeyboardKey: String {
     
     case number1 = "1"

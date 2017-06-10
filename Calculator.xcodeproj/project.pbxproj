@@ -22,8 +22,8 @@
 		05CE21AA1EE13326009771DC /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05CE21A91EE13326009771DC /* Router.swift */; };
 		05CE21AC1EE13CB4009771DC /* Calculator.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05CE21AB1EE13CB4009771DC /* Calculator.storyboard */; };
 		05CE21B21EE14B0D009771DC /* Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05CE21B11EE14B0D009771DC /* Keyboard.swift */; };
-		05CE21B41EE14B87009771DC /* Operator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05CE21B31EE14B87009771DC /* Operator.swift */; };
-		05CE21B61EE14B9A009771DC /* Operand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05CE21B51EE14B9A009771DC /* Operand.swift */; };
+		05CE21B41EE14B87009771DC /* Operator+Number.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05CE21B31EE14B87009771DC /* Operator+Number.swift */; };
+		05CE21B61EE14B9A009771DC /* Operand+AddSubstract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05CE21B51EE14B9A009771DC /* Operand+AddSubstract.swift */; };
 		05CE21BE1EE169A8009771DC /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05CE21BD1EE169A8009771DC /* Stack.swift */; };
 		C9B22A111EE8711F0020CCE6 /* Keyboard.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9B22A101EE8711F0020CCE6 /* Keyboard.xib */; };
 /* End PBXBuildFile section */
@@ -67,9 +67,9 @@
 		05CE21A91EE13326009771DC /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		05CE21AB1EE13CB4009771DC /* Calculator.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Calculator.storyboard; sourceTree = "<group>"; };
 		05CE21B11EE14B0D009771DC /* Keyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keyboard.swift; sourceTree = "<group>"; };
-		05CE21B31EE14B87009771DC /* Operator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Operator.swift; sourceTree = "<group>"; };
-		05CE21B51EE14B9A009771DC /* Operand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Operand.swift; sourceTree = "<group>"; };
-		05CE21BD1EE169A8009771DC /* Stack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stack.swift; sourceTree = "<group>"; };
+		05CE21B31EE14B87009771DC /* Operator+Number.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Operator+Number.swift"; sourceTree = "<group>"; };
+		05CE21B51EE14B9A009771DC /* Operand+AddSubstract.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Operand+AddSubstract.swift"; sourceTree = "<group>"; };
+		05CE21BD1EE169A8009771DC /* Stack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Stack.swift; path = Tools/Stack.swift; sourceTree = "<group>"; };
 		C9B22A101EE8711F0020CCE6 /* Keyboard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Keyboard.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -121,7 +121,8 @@
 		05CE21671EE131CA009771DC /* Calculator */ = {
 			isa = PBXGroup;
 			children = (
-				05CE21B01EE14AF1009771DC /* Tools */,
+				C9FDBDC51EEBF96D00B42F9F /* Utils */,
+				05CE21B01EE14AF1009771DC /* Keyboard */,
 				05CE21961EE131E5009771DC /* Modules */,
 				05CE21681EE131CA009771DC /* AppDelegate.swift */,
 				05CE216F1EE131CA009771DC /* Assets.xcassets */,
@@ -161,6 +162,7 @@
 		05CE21971EE131E5009771DC /* Calculator */ = {
 			isa = PBXGroup;
 			children = (
+				C9FDBDC41EEBF92500B42F9F /* Tools */,
 				05CE21AB1EE13CB4009771DC /* Calculator.storyboard */,
 				05CE21981EE131F1009771DC /* CalculatorView.swift */,
 				05CE219C1EE13204009771DC /* CalculatorInteractor.swift */,
@@ -181,16 +183,31 @@
 			path = Base;
 			sourceTree = "<group>";
 		};
-		05CE21B01EE14AF1009771DC /* Tools */ = {
+		05CE21B01EE14AF1009771DC /* Keyboard */ = {
 			isa = PBXGroup;
 			children = (
-				05CE21B51EE14B9A009771DC /* Operand.swift */,
-				05CE21B31EE14B87009771DC /* Operator.swift */,
+				05CE21B51EE14B9A009771DC /* Operand+AddSubstract.swift */,
+				05CE21B31EE14B87009771DC /* Operator+Number.swift */,
 				05CE21B11EE14B0D009771DC /* Keyboard.swift */,
-				05CE21BD1EE169A8009771DC /* Stack.swift */,
 				C9B22A101EE8711F0020CCE6 /* Keyboard.xib */,
 			);
+			name = Keyboard;
 			path = Tools;
+			sourceTree = "<group>";
+		};
+		C9FDBDC41EEBF92500B42F9F /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Tools;
+			sourceTree = "<group>";
+		};
+		C9FDBDC51EEBF96D00B42F9F /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				05CE21BD1EE169A8009771DC /* Stack.swift */,
+			);
+			name = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -337,11 +354,11 @@
 				05CE21B21EE14B0D009771DC /* Keyboard.swift in Sources */,
 				05CE21A81EE1331D009771DC /* Module.swift in Sources */,
 				05CE21991EE131F1009771DC /* CalculatorView.swift in Sources */,
-				05CE21B41EE14B87009771DC /* Operator.swift in Sources */,
+				05CE21B41EE14B87009771DC /* Operator+Number.swift in Sources */,
 				05CE219B1EE131FB009771DC /* CalculatorPresenter.swift in Sources */,
 				05CE21A11EE13219009771DC /* CalculatorEntity.swift in Sources */,
 				05CE219D1EE13204009771DC /* CalculatorInteractor.swift in Sources */,
-				05CE21B61EE14B9A009771DC /* Operand.swift in Sources */,
+				05CE21B61EE14B9A009771DC /* Operand+AddSubstract.swift in Sources */,
 				05CE219F1EE1320E009771DC /* CalculatorRouter.swift in Sources */,
 				05CE21691EE131CA009771DC /* AppDelegate.swift in Sources */,
 			);
