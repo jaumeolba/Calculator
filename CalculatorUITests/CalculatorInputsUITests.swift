@@ -69,7 +69,7 @@ class CalculatorInputsUITests: XCTestCase {
         XCTAssert(checkResult() == "1+")
         app.buttons["2"].tap()
         app.buttons["-"].tap()
-        XCTAssert(checkResult() == "1-2-")
+        XCTAssert(checkResult() == "1+2-")
     }
     
     //MARK: Decimal

@@ -225,7 +225,7 @@ class CalculatorOperationsUITests: XCTestCase {
         app.buttons["9"].tap()
         app.buttons["="].tap()
         
-        XCTAssert(checkResult() == "-71.13")
+        XCTAssert(checkResult() == "-60.06")
     }
     
     func testCombination5() {
@@ -290,8 +290,9 @@ class CalculatorOperationsUITests: XCTestCase {
         app.buttons["."].tap()
         app.buttons["8"].tap()
         app.buttons["9"].tap()
+        app.buttons["="].tap()
         
-        XCTAssert(checkResult() == "-73.26")
+        XCTAssert(checkResult() == "8.82")
     }
     
     
@@ -332,6 +333,8 @@ class CalculatorOperationsUITests: XCTestCase {
         app.buttons["8"].tap()
         app.buttons["9"].tap()
         
+        app.buttons["="].tap()
+        
         XCTAssert(checkResult() == "178.38")
     }
     
@@ -369,6 +372,8 @@ class CalculatorOperationsUITests: XCTestCase {
         app.buttons["."].tap()
         app.buttons["8"].tap()
         app.buttons["9"].tap()
+        
+        app.buttons["="].tap()
         
         XCTAssert(checkResult() == "2.2735")
     }
